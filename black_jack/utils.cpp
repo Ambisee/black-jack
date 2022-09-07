@@ -10,6 +10,7 @@
 # include <ctime>
 # include <cmath>
 # include <vector>
+# include <limits>
 # include "os_utils.h"
 # include "Card.h"
 # include "Bet.h"
@@ -22,7 +23,7 @@ namespace utils {
 
     void clear_console_input() {
         std::cin.clear();
-        std::cin.ignore(10000, '\n');
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 
 
@@ -77,15 +78,14 @@ namespace utils {
 
 
     void select_card(std::vector<Card>& deck, std::vector<Card>& hand) {
-        /*hand.insert(
+        hand.insert(
             hand.begin(),
             deck[deck.size() - 1]
         );
 
-        deck.shrink_to_fit();
-        deck.erase(deck.end() - 1);*/
-        hand.push_back(deck[deck.size() - 1]);
-        deck.pop_back();
+        deck.erase(deck.end() - 1);
+        //hand.push_back(deck[deck.size() - 1]);
+        //deck.pop_back();
     }
 
 
@@ -104,7 +104,7 @@ namespace utils {
             }
 
             /* Check if player's betting amount isn't negative and lower than player's balance */
-            if ((amount > player_balance)) {
+            if (amount > player_balance) {
                 clear_console_input();
                 os_utils::clrscr();
                 continue;

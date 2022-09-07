@@ -129,7 +129,7 @@ void game_screen(Option* gameOptions) {
 	while (run || player_balance <= 0) {
 		Card split_card;
 
-		/* Shuffle the deck if it reaches a certain number of rounds */
+		// Shuffle the deck if it reaches a certain number of rounds
 		if (game_round % rounds_to_shuffle == 0) {
 			deck.clear();
 			deck = utils::generate_deck(2);
@@ -145,13 +145,12 @@ void game_screen(Option* gameOptions) {
 
 		player_balance -= betting_amount;
 
-		/* Distributing the cards to the players */
+		// Distributing the cards to the players
 		for (int i = 0; i < 2; i++) {
 			utils::select_card(deck, player_hand);
 			utils::select_card(deck, house_hand);
 		}
 
-		// Here goes the game handler
 		player_bets.push_back(Bet(betting_amount, 0, false));
 		continue_round = round_screen(
 			player_balance,
@@ -181,8 +180,8 @@ void game_screen(Option* gameOptions) {
 
 		os_utils::clrscr();
 
-		// Temporary AI logic to decide whether or not to hit or stand
-		if (utils::calculate_total_value(house_hand) < 15) {
+		// House logic for evaluating when to select card
+		while (utils::calculate_total_value(house_hand) < 15) {
 			utils::select_card(deck, house_hand);
 		}
 

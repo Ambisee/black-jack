@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AI.cpp" />
     <ClCompile Include="Bet.cpp" />
     <ClCompile Include="black_jack.cpp" />
     <ClCompile Include="Card.cpp" />
@@ -149,7 +148,6 @@
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AI.h" />
     <ClInclude Include="Bet.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Option.h" />
