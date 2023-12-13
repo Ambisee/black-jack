@@ -9,6 +9,10 @@
 # include <Windows.h>
 
 namespace os_utils {
+    /* 
+    Code by user Swift - Friday Pie from this Stack overflow thread:
+    https://stackoverflow.com/questions/6486289/how-can-i-clear-console
+    */
     void clrscr() {
         HANDLE                     hStdOut;
         CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -56,6 +60,10 @@ namespace os_utils {
 
 namespace os_utils {
     void clrscr() {
+        /* 
+        Code by user Swift - Friday Pie from this Stack overflow thread:
+        https://stackoverflow.com/questions/6486289/how-can-i-clear-console
+        */
         if (!cur_term) {
             int result;
             setupterm(NULL, STDOUT_FILENO, &result);
